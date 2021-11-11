@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My JavaScript Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bdy">
+
+    <div class="container">
+
+        <div class="bt input">
+            <form name="form">
+                <input readonly type="text" name="textview">
+            </form>
+        </div>
+
+        <div class="bt delete" onclick="cl()">
+            C
+        </div>
+        <div class="bt back" onclick="back()">
+            &larr;
+        </div>
+        <div class="bt" onclick="inSpecial('+')">
+            +
+        </div>
+        <div class="bt" onclick="inSpecial('-')">
+            -
+        </div>
+        <div class="bt" onclick="inSpecial('*')">
+            &times;
+        </div>
+        <div class="bt" onclick="inSpecial('/')">
+            &divide;
+        </div>
+        <div class="bt" onclick="insert('7')">7</div>
+        <div class="bt" onclick="insert('8')">8</div>
+        <div class="bt" onclick="insert('9')">9</div>
+        <div class="bt" onclick="insert('(')">(</div>
+        <div class="bt" onclick="insert('4')">4</div>
+        <div class="bt" onclick="insert('5')">5</div>
+        <div class="bt" onclick="insert('6')">6</div>
+        <div class="bt" onclick="insert(')')">)</div>
+        <div class="bt" onclick="insert('1')">1</div>
+        <div class="bt" onclick="insert('2')">2</div>
+        <div class="bt" onclick="insert('3')">3</div>
+        <div class="bt equal" onclick="equal()">
+            =
+        </div>
+        <div class="bt zero" onclick="insert('0')">
+            0
+        </div>
+        <div class="bt" onclick="inSpecial('.')">
+            .
+        </div>
+
+    </div>
+
+    <script>
+        function insert(num) {
+            document.form.textview.value = document.form.textview.value + num;
+        }
+
+        function inSpecial(num) {
+            var s = document.form.textview.value;
+            var p = "+", m = "-", u = "*", d = "/";
+            if (!s) {
+                document.form.textview.value = document.form.textview.value;
+            }
+            else if (s.substring(s.length-1, s.length) == p || s.substring(s.length-1, s.length) == m ||
+            s.substring(s.length-1, s.length) == u || s.substring(s.length-1, s.length) == d) {
+                document.form.textview.value = document.form.textview.value;
+            }
+            else {
+                document.form.textview.value = document.form.textview.value + num;
+            }
+        }
+
+        function cl() {
+            document.form.textview.value = "";
+        }
+
+        function back( ) {
+            var s = document.form.textview.value;
+            document.form.textview.value = s.substring(0, s.length-1);
+        }
+
+        function equal () {
+            var s = document.form.textview.value;
+            if (s) {
+                document.form.textview.value = eval(s);
+            }
+        }
+    </script>
+
+</body>
+
+</html>
